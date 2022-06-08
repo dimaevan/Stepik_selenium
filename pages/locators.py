@@ -13,3 +13,5 @@ class LoginPageLocators:
 
 class ProductPageLocators:
     ADD_TO_CARD = (By.CLASS_NAME, "btn-add-to-basket")
+    ALERT_PRODUCT = (By.CSS_SELECTOR, 'div#messages div.alert:nth-child(1) strong')
+    NAME_PRODUCT = (By.CSS_SELECTOR, 'div.product_main h1:nth-child(1)')
