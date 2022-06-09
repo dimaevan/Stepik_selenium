@@ -3,6 +3,7 @@ import pytest
 
 url_pattern = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer"
 links = [f"{url_pattern}{x}" for x in range(10)]
+links[7] = pytest.param(url_pattern+'7', marks=pytest.mark.xfail)
 
 
 @pytest.mark.parametrize('link', links)
