@@ -3,6 +3,7 @@ from .locators import ProductPageLocators
 import math
 from selenium.common.exceptions import NoAlertPresentException
 
+
 class ProductPage(BasePage):
     def add_to_cart(self):
         button = self.browser.find_element(*ProductPageLocators.ADD_TO_CARD)
@@ -27,3 +28,13 @@ class ProductPage(BasePage):
         product_in_bucket = self.browser.find_element(*ProductPageLocators.ALERT_PRODUCT)
         product = self.browser.find_element(*ProductPageLocators.NAME_PRODUCT)
         assert product.text == product_in_bucket.text
+
+    def test_guest_cant_see_success_message_after_adding_product_to_basket(self):
+        assert not self.is_not_element_presented(*ProductPageLocators.ALERT_PRODUCT)
+
+    def test_guest_cant_see_success_message(self):
+        assert self.is_not_element_presented(*ProductPageLocators.ALERT_PRODUCT)
+
+    def test_message_disappeared_after_adding_product_to_basket(self):
+        assert self.is_disappeared(*ProductPageLocators.ALERT_PRODUCT)
+
