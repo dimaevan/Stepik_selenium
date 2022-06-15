@@ -23,18 +23,3 @@ class ProductPage(BasePage):
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
-
-    def test_added_product_in_bucket(self):
-        product_in_bucket = self.browser.find_element(*ProductPageLocators.ALERT_PRODUCT)
-        product = self.browser.find_element(*ProductPageLocators.NAME_PRODUCT)
-        assert product.text == product_in_bucket.text
-
-    def test_guest_cant_see_success_message_after_adding_product_to_basket(self):
-        assert not self.is_not_element_presented(*ProductPageLocators.ALERT_PRODUCT)
-
-    def test_guest_cant_see_success_message(self):
-        assert self.is_not_element_presented(*ProductPageLocators.ALERT_PRODUCT)
-
-    def test_message_disappeared_after_adding_product_to_basket(self):
-        assert self.is_disappeared(*ProductPageLocators.ALERT_PRODUCT)
-

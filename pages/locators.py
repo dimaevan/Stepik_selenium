@@ -1,9 +1,12 @@
 from selenium.webdriver.common.by import By
 
 
-class MainPageLocators:
+class BasePageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     SUBMIT_BUTTON = (By.NAME, "login_submit")
+    BASKET = (By.XPATH, '//a[contains(@href,"basket")]')
+    BASKET_ITEMS = (By.CLASS_NAME, 'basket-items')
+    TEXT_EMPTY_BASKET = (By.CSS_SELECTOR, 'div#content_inner p')
 
 
 class LoginPageLocators:
