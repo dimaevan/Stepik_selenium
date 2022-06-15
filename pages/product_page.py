@@ -23,3 +23,12 @@ class ProductPage(BasePage):
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
+
+    def no_alert_product_in_basket(self):
+        assert self.is_not_element_presented(*ProductPageLocators.ALERT_PRODUCT), "Alert on page!"
+
+    def alert_product_in_basket(self):
+        assert self.is_element_present(*ProductPageLocators.ALERT_PRODUCT), 'No alert adding product'
+
+    def alert_is_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.ALERT_PRODUCT), 'Alert is not disappeared'
