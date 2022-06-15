@@ -13,23 +13,22 @@ def browser(request):
     browser_name = request.config.getoption("browser_name")
     language = request.config.getoption('language')
 
-    match browser_name:
-        case 'chrome':
-            print("\nstart chrome browser for test..")
+    if browser_name == 'chrome':
+        print("\nstart chrome browser for test..")
 
-            from selenium.webdriver.chrome.options import Options
-            options = Options()
-            options.add_experimental_option('prefs', {'intl.accept_languages': language})
-            browser = webdriver.Chrome(options=options)
+        from selenium.webdriver.chrome.options import Options
+        options = Options()
+        options.add_experimental_option('prefs', {'intl.accept_languages': language})
+        browser = webdriver.Chrome(options=options)
 
-        case 'firefox':
-            print("\nstart firefox browser for test..")
-            fp = webdriver.FirefoxProfile()
-            fp.set_preference("intl.accept_languages", language)
-            browser = webdriver.Firefox(firefox_profile=fp)
+    elif browser_name == 'firefox':
+        print("\nstart firefox browser for test..")
+        fp = webdriver.FirefoxProfile()
+        fp.set_preference("intl.accept_languages", language)
+        browser = webdriver.Firefox(firefox_profile=fp)
 
-        case _:
-            raise pytest.UsageError("--browser_name should be chrome or firefox")
+    else:
+        raise pytest.UsageError("--browser_name should be chrome or firefox")
     yield browser
 
     print("\nquit browser..")

@@ -7,11 +7,16 @@ class BasePageLocators:
     BASKET = (By.XPATH, '//a[contains(@href,"basket")]')
     BASKET_ITEMS = (By.CLASS_NAME, 'basket-items')
     TEXT_EMPTY_BASKET = (By.CSS_SELECTOR, 'div#content_inner p')
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
 
 class LoginPageLocators:
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
     REGISTER_FORM = (By.CSS_SELECTOR, "#register_form")
+    REGISTRATION_EMAIL_INPUT = (By.NAME, 'registration-email')
+    REGISTRATION_PASSWORD_INPUT_1 = (By.NAME, 'registration-password1')
+    REGISTRATION_PASSWORD_INPUT_2 = (By.NAME, 'registration-password2')
+    REGISTRATION_SUBMIT_BTN = (By.NAME, 'registration_submit')
 
 
 class ProductPageLocators:
